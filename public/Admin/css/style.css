@@ -1,0 +1,118 @@
+header {
+  background-color: #8aaae5;
+  padding: 10px 0;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+header .inner-logo a {
+  color: #ffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.sider {
+  background-color: #2f3c7e;
+  width: 150px;
+  height: calc(100% - 56px);
+  position: fixed;
+  top: 56px;
+  left: 0;
+}
+
+.main {
+  margin: 15px;
+  position: relative;
+  left: 150px;
+  width: calc(100% - 180px);
+}
+
+.sider .inner-menu ul {
+  padding-left: 0;
+  padding-top: 10px;
+}
+
+.sider .inner-menu ul li {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 10px;
+}
+
+.sider .inner-menu ul li a {
+  color: #FBEAEB;
+  text-decoration: none;
+  font-weight: 400;
+  padding-left: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  object-fit: cover;
+  width: 100px;
+  height: 60px;
+}
+
+/* Show Alert */
+[show-alert] {
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  z-index: 9999;
+}
+
+[show-alert].alert-hidden {
+  animation-name: alert-hidden;
+  animation-duration: 4s;
+  animation-fill-mode: both;
+}
+
+@keyframes alert-hidden {
+  from {
+    right: 15px;
+  }
+
+  to {
+    right: -100%;
+    display: none;
+  }
+}
+
+[show-alert] [close-alert] {
+  display: inline-block;
+  padding: 3px 10px;
+  background-color: #F14144;
+  color: white;
+  border-radius: 100%;
+  font-size: 12px;
+  font-weight: 900;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+}
+
+/* END Show Alert */
+
+/* Image Preview */
+.image-preview {
+  width: 150px;
+  height: auto;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.image-preview[src=""] {
+  display: none;
+}
+
+/* END Image Preview */

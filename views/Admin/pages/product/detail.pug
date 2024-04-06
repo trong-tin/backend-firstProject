@@ -1,0 +1,25 @@
+extends ../../layouts/defaultAdmin.pug
+block main
+  h1(class="mb-4") #{pageTitle}
+  if(product.price)
+    div(class="mb-4") Giá:
+      b #{product.price}$
+  if(product.discountPercentage)
+    div(class="mb-4") Giảm giá:
+      b #{product.discountPercentag}%
+  if(product.stock)
+    div(class="mb-4") Còn lại:
+      b #{product.stock} sản phẩm
+  if(product.status)
+    div(class="mb-4") Trạng thái:
+      span(class=`badge rounded-pill bg-${product.status === "active" ? "success" : "danger"}`) #{product.status === "active" ? "Đang hoạt động" : "Dừng hoạt động"}
+  if(product.position)
+    div(class="mb-4") Vị trí:
+      b #{product.position} 
+  if(product.description)
+    div(class="mb-4") Mô tả chi tiết về sản phẩm:
+      b #{product.description} 
+  if(product.thumbnail)
+    div(class="mb-4") Hình ảnh về sản phẩm:
+      img(src=product.thumbnail class="image-preview")
+  a(class="btn btn-warning" href=`${prefixAdmin}/product/edit/${product.id}`) Chỉnh sửa
