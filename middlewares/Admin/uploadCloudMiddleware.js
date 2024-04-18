@@ -3,7 +3,7 @@ const streamifier = require("streamifier");
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_KEY,
-  api_secret: process.env.CLOUD_SECRET
+  api_secret: process.env.CLOUD_SECRET,
 });
 module.exports.upload = (req, res, next) => {
   if (req.file) {
@@ -16,7 +16,6 @@ module.exports.upload = (req, res, next) => {
             reject(error);
           }
         });
-
         streamifier.createReadStream(req.file.buffer).pipe(stream);
       });
     };

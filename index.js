@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const methodOveride = require("method-override");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -28,6 +29,14 @@ app.use(cookieParser("NGTRGTIN"));
 app.use(session({ cookie: { maxAge: 60000 } }));
 app.use(flash());
 //END Flash
+
+// TinyMCE
+app.use(
+  "/tinymce",
+  express.static(path.join(__dirname, "node_modules", "tinymce"))
+);
+
+// END TinyMCE
 //App Locals Variables
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
 

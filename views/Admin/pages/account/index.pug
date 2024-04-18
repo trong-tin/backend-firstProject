@@ -1,0 +1,53 @@
+extends ../../layouts/defaultAdmin.pug
+include ../../mixins/alert.pug
+
+block main
+  h1(class="mb-4") Danh sách tài khoản
+  +alertSuccess(5000)
+  .card.mb-3
+    .card-header Danh sách
+    .card-body 
+      .row
+        .col-8
+        .col-4.text-right
+          a(
+            href=`${prefixAdmin}/accounts/create`
+            class="btn btn-outline-success"
+          ) +Thêm mới
+      table(
+        class="table table-hover table-sm"
+      )
+        thead
+          tr
+            th STT
+            th Avatar
+            th Họ tên
+            th Phân quyền
+            th Email
+            th Trạng thái
+            th Hành động
+        tbody
+          if(records.length>0)
+            each item,index in records
+              tr
+                td #{index+1}
+                td 
+                  img(src=item.avatar alt="Đây là avatar")
+                td #{item.fullName}
+                td #{item.nameRole}
+                td #{item.email}
+                td 
+                  span(class=`badge rounded-pill ${item.status==="active"?" bg-success":"bg-danger"}`) #{item.status==="active"?"Đang hoạt động":"Dừng hoạt động"}
+                td 
+                  a(
+                    class="btn btn-secondary btn-sm"
+                    href=`${prefixAdmin}/accounts/detail/${item.id}`
+                  ) Xem chi tiết
+                  a(
+                    class="btn btn-warning btn-sm ms-2"
+                    href=`${prefixAdmin}/accounts/edit/${item.id}`
+                  ) Sửa
+                  a(
+                    class="btn btn-danger btn-sm ms-2"
+                    href=`${prefixAdmin}/accounts/delete/${item.id}`
+                  ) Xóa

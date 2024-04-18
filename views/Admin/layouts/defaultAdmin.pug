@@ -7,9 +7,19 @@ html
 
   body  
     include ../partials/header.pug
-    include ../partials/sider.pug
+    .body
+
+      include ../partials/sider.pug
+
     .main
       block main
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js")
+
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js")
+    //- TinyMCE
+    script(src="/tinymce/tinymce.min.js")
+    script(src="/Admin/js/my-tinymce-config.js")
+    //- END TinyMCE
     script(src="/Admin/js/script.js")
+
+
