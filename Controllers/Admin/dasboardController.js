@@ -1,6 +1,6 @@
 // [GET] admin/dasboard
-module.exports.dasboard = (req, res) => {
-  res.render("Admin/pages/dasboard/index", {
+module.exports.dashboard = (req, res) => {
+  res.render("Admin/pages/dashboard/index", {
     pageTitle: "Trang Tổng quan",
   });
 };
