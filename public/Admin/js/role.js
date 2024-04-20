@@ -44,7 +44,6 @@ if (dataRecords) {
     record.permissions.forEach((item) => {
       const row = tablePermissions.querySelector(`[data-name='${item}']`);
       const input = row.querySelectorAll("input")[index];
-      console.log(row);
       input.checked = true;
     });
   });

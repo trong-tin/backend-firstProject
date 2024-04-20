@@ -1,6 +1,7 @@
 // [GET] /admin/product
 const Product = require("../../models/productModel");
 const ProductCategory = require("../../models/productCategoryModel");
+const Account = require("../../models/accountModel");
 const systemConfig = require("../../config/system");
 const filterStatusHelper = require("../../helpers/filterStatus");
 const searchHelper = require("../../helpers/search");
@@ -44,6 +45,14 @@ module.exports.index = async (req, res) => {
     .sort(sort)
     .limit(objectPagination.limitItems)
     .skip(objectPagination.skip);
+  for (const product of products) {
+    const creator = await Account.findOne({
+      _id: product.createdBy.account_id,
+    });
+    if (creator) {
+      product.creator = creator.fullName;
+    }
+  }
   res.render("Admin/pages/product/index", {
     pageTitle: "Danh sách sản phẩm",
     products: products,
@@ -138,6 +147,9 @@ module.exports.createPost = async (req, res) => {
   } else {
     req.body.position = parseInt(req.body.position);
   }
+  req.body.createdBy = {
+    account_id: res.locals.user.id,
+  };
   const product = new Product(req.body);
   await product.save();
   res.redirect(`${systemConfig.prefixAdmin}/product`);

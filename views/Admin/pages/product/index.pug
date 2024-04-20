@@ -51,6 +51,7 @@ block main
                 th Giá
                 th Vị trí
                 th Trạng thái
+                th Người tạo
                 th Hành động
             tbody
               each item,index in products
@@ -87,6 +88,9 @@ block main
                       data-status=item.status
                       data-id=item.id
                       button-change-status) Dừng hoạt động
+                  td.pt-3
+                    p #{item.creator}
+                    p #{item.createdBy.createdAt}
                   td.pt-3  
                     a(href=`${prefixAdmin}/product/detail/${item.id}` 
                     class="btn btn-success btn-sm ms-2") Xem chi tiết
