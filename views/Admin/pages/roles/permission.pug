@@ -111,6 +111,32 @@ block main
               input(type="checkbox")
         //- END Nhóm quyền
 
+        //- Tài khoản
+        tr(class="bg-secondary")
+          td(colspan="4")
+            b Tài khoản
+        tr(data-name="account-view")
+          td Xem
+          each item in records
+            td(class="text-center")
+              input(type="checkbox")
+        tr(data-name="account-create")
+          td Thêm mới
+          each item in records
+            td(class="text-center")
+              input(type="checkbox")
+        tr(data-name="account-edit")
+          td Sửa
+          each item in records
+            td(class="text-center")
+              input(type="checkbox")
+        tr(data-name="account-delete")
+          td Xóa
+          each item in records
+            td(class="text-center")
+              input(type="checkbox")
+        //- END Tài khoản
+
         
   form(
     id="form-change-permissions"

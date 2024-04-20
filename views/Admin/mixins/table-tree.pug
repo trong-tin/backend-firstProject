@@ -34,12 +34,13 @@ mixin table-tree(items,level = 1)
           data-id=item.id
           button-change-status) Dừng hoạt động
       td.pt-3  
-
-        a(class="btn btn-warning btn-sm" href=`${prefixAdmin}/product-category/edit/${item.id}`) Sửa
-        button(class="btn btn-danger btn-sm ms-2"
-        button-delete
-        data-id=item.id
-        ) xóa
+        if(role.permissions.includes("products-category-edit"))
+          a(class="btn btn-warning btn-sm" href=`${prefixAdmin}/product-category/edit/${item.id}`) Sửa
+        if(role.permissions.includes("products-category-delete"))
+          button(class="btn btn-danger btn-sm ms-2"
+          button-delete
+          data-id=item.id
+          ) xóa
         a(href=`${prefixAdmin}//product-category/detail/${item.id}` 
         class="btn btn-success btn-sm ms-2") Xem chi tiết
     if item.children && item.children.length > 0

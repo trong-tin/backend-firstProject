@@ -14,7 +14,7 @@ if (tablePermissions) {
         });
       } else {
         inputs.forEach((input, index) => {
-          const checked = input.checked;
+          const checked = input.checked; 
           if (checked) {
             permissions[index].permissions.push(name);
           }
@@ -44,6 +44,7 @@ if (dataRecords) {
     record.permissions.forEach((item) => {
       const row = tablePermissions.querySelector(`[data-name='${item}']`);
       const input = row.querySelectorAll("input")[index];
+      console.log(row);
       input.checked = true;
     });
   });
